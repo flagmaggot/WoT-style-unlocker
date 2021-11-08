@@ -66,18 +66,20 @@ class TankStylesApp(Flask):
                 with open(os.path.join(root_dir, file_name)) as f:
                     lines = f.readlines()
                     xml = ''.join(lines[:1] + lines[2:])
-
+                
                 root = ET.fromstring(xml)
                 name, _ = os.path.splitext(root.tag)
 
                 styles_set = set()
                 for model_tag in root.iter(tag='models'):
                     model_styles = model_tag.find('sets')
+                    
                     if not model_styles:
                         continue
 
                     for style in list(model_styles):
-                        styles_set.add((style.tag, display_names[name]["styles"][style.tag]))
+                        if style.tag != 'ProgressionStyle':
+                            styles_set.add((style.tag, display_names[name]["styles"][style.tag]))
 
                 if not styles_set:
                     os.remove(os.path.join(root_dir, file_name))

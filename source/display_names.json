@@ -407,6 +407,14 @@
       "GB91_Super_Conqueror_3Dst": "Sentry"
     }
   },
+  "GB100_Manticore": {
+    "name": "Manticore",
+    "class": "HT",
+    "tier": 10,
+    "styles": {
+      "GB100_Manticore_3DSt_HW_21": "Manticore"
+    }
+  },
   "GB105_Black_Prince_2019": {
     "name": "A43 BP prototype",
     "class": "HT",
