@@ -36,8 +36,13 @@ with open('source/display_names.json') as f:
 
                 for style in list(model_styles):
                     if style.tag != 'ProgressionStyle':
-                        if style.tag not in display_names:
-                            print(style.tag)
+                        #if style.tag not in display_names:
+                        #    print(style.tag)
+                         
+                        for dict in display_names:
+                                print(dict)
+
+                         
                             #print(display_names[name])
                             #print(style.tag)
                          # if style.tag not in display_names[name]["styles"][style.tag]:
