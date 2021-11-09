@@ -80,7 +80,7 @@ with open('source/display_names.json') as f:
                     continue
                 
                 #ROOT NAME
-                #print("RootName: ",name)
+                print("RootName: ",name)
                 
                 
                 if len(tank_class) == 0:
@@ -93,8 +93,11 @@ with open('source/display_names.json') as f:
                 URL = "https://wiki.wargaming.net/en/Tank:"+name
                 page = requests.get(URL)
                 soup = BeautifulSoup(page.content, "html.parser")
-                tier2 = soup.select("a[href*=Tier]")[0]
-                tier = tier2.get_text().replace("Tier ","")
+                try:
+                    tier2 = soup.select("a[href*=Tier]")[0]
+                    tier = tier2.get_text().replace("Tier ","")
+                except:
+                    tier = "I";
                 
                 
                 #tier = soup.find_all("div", {"class": "b-performance_position"})
@@ -142,12 +145,23 @@ with open('source/display_names.json') as f:
                     tank_style[style_name.tag] = style_name.tag
                     #print("        style name: "+style_name.tag)
                 
-                #tank_styles[]=tank_style
+                tank_styles["styles"]=tank_style
                 
-                TankDict[name] = [dictionary,tank_style];
-                print(TankDict)
+                #TankDict[name] = dictionary,tank_styles
+                #print(TankDict)
             
+                dictionary ={ 
+                      "name": tank_name, 
+                      "class": tank_class, 
+                      "tier": romanToInt(tier),
+                      "styles": tank_style
+                }
+                
+                TankDict[name] = dictionary
+                #print(TankDict)
+            
+                display_names.update(TankDict)
 
                 with open('data.json', 'w', encoding='utf-8') as f:
-                    json.dump(TankDict, f, ensure_ascii=False, indent=4)
+                    json.dump(display_names, f, ensure_ascii=False, indent=4)
  
