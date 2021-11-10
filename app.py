@@ -97,7 +97,7 @@ class TankStylesApp(Flask):
                         paint.add(self.customizable_areas[paint_areas.text.strip()])
 
                 self.vehicles[name]['script_paths'].append(os.path.join(*split_path[-5:], file_name))
-                print(name)
+                #print(name)
                 self.vehicles[name].update({
                     'name': name,
                     'tier': display_names[name]['tier'],
@@ -117,7 +117,7 @@ class TankStylesApp(Flask):
             return [], vehicle['xml']
 
         root = ET.fromstring(vehicle['xml'])
-        print(root)
+        #print(root)
         model_states = ['undamaged', 'destroyed', 'exploded']
         for model_tag in root.iter(tag='models'):
             for state in model_states:
@@ -125,7 +125,7 @@ class TankStylesApp(Flask):
 
             style_sets = model_tag.find('sets')
             if style_sets is None:
-                print(name)
+                print("Style not present: " + name)
                 raise ValueError
             style = style_sets.find(style_name)
             if style is None:
