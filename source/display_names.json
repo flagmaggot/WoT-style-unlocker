@@ -753,14 +753,6 @@
             "A122_TS-5_3Dst": "A122_TS-5_3Dst"
         }
     },
-    "A14_T30_HELL": {
-        "name": "A14 T30 HELL",
-        "class": "LT",
-        "tier": 1,
-        "styles": {
-            "T30_Countdown": "T30_Countdown"
-        }
-    },
     "A85_T110E3": {
         "name": "T110E3",
         "class": "SPG",

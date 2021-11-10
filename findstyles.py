@@ -73,10 +73,13 @@ with open('source/display_names.json') as f:
             all_name_elements = root.findall('.//sets')
             if bool(all_name_elements):
                 if name.endswith("_bob"):
+                    os.remove(os.path.join(root_dir, file_name))
                     continue
                 if name.endswith("_siege_mode"):
+                    os.remove(os.path.join(root_dir, file_name))
                     continue
                 if name.endswith("_bot"):
+                    os.remove(os.path.join(root_dir, file_name))
                     continue
                 
                 #ROOT NAME
